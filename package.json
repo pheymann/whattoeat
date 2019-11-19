@@ -1,0 +1,39 @@
+{
+  "name": "whattoeat",
+  "version": "0.0.0",
+  "description": "",
+  "watch": {
+    "build-dev": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "ts,scss",
+      "quiet": false
+    }
+  },
+  "scripts": {
+    "watch-build-dev": "npm-watch build-dev",
+    "build-dev": "webpack",
+    "build-prod": "webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Paul Heymann",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jquery": "^3.3.31",
+    "css-loader": "^3.2.0",
+    "jquery": "^3.4.1",
+    "mini-css-extract-plugin": "^0.8.0",
+    "npm-watch": "^0.6.0",
+    "sass-loader": "^8.0.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.2",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.9.0"
+  },
+  "dependencies": {
+    "html-loader": "^0.5.5",
+    "node-sass": "^4.12.0"
+  }
+}

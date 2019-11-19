@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <title>What to eat</title>
+  </head>
+  <body>
+    <header>
+      <p>What to Eat?</p>
+    </header>
+
+    <div class="container">
+      <button id="select-single-recipe">Schlag ein Rezept vor!</button>
+
+      <p>oder</p>
+
+      <h3>Gib mir Rezepte für die folgenden Tage:</h3>
+      <select id="number-of-days">
+        <option value="7">7</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+
+      <h3>Wieviele Tage willst du 2 Hauptgerichte haben?</h3>
+      <div id="number-of-days-with-two-main-dishes">
+      </div>
+
+      <button id="select-recipes">Leg los!</button>
+
+      <div id="recipes">
+      </div>
+
+      <script src="index.js"></script>
+    </div>
+  </body>
+</html>

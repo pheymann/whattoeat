@@ -1,0 +1,81 @@
+@import './partials/basic_styles';
+
+body {    
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+    @extend %common-text-styling;
+
+    font-family: $header-font-family;
+}
+
+h1 {
+    font-size: $h1-font-size;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-top: 50px;
+}
+
+p, 
+li, 
+a {
+    @extend %content-text-styling;
+}
+
+input,
+label {
+    @extend %content-text-styling;
+
+    font-family: $header-font-family;
+}
+
+.clearfix {
+    zoom: 1;
+}
+.clearfix:after {
+    content: '.';
+    display: block;
+    clear: both;
+    height: 0px;
+    visibility: hidden;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 5px 0 5px 0;
+    background-color: rgb(46, 46, 46);;
+    z-index: 100;
+
+    box-shadow: 0 0 5px $text-light-color;
+
+    p {
+        margin: 5px 0 5px 20px;
+        color: $bg-color;
+        font-family: $header-font-family;
+    }
+}
+
+.container {
+    width: 800px;
+    margin: 60px auto 0 auto;
+    text-align: center;
+
+    #recipes {
+        ul {
+            list-style: none;
+        }
+    }
+}

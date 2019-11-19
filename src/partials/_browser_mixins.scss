@@ -1,0 +1,49 @@
+@mixin internal-placeholder {
+  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      @content;
+  }
+
+  &::-moz-placeholder { /* Firefox 19+ */
+      @content;
+  }
+
+  &:-ms-input-placeholder { /* IE 10+ */
+      @content;
+  }
+    
+  &:-moz-placeholder { /* Firefox 18- */
+      @content;
+  }
+}
+
+@mixin box-shadow($horizontalOffset, $verticalOffset, $blurRadius, $spreadRadius, $color) {
+  -moz-box-shadow:    $horizontalOffset $verticalOffset $blurRadius $spreadRadius $color;
+  -webkit-box-shadow: $horizontalOffset $verticalOffset $blurRadius $spreadRadius $color;
+  box-shadow:         $horizontalOffset $verticalOffset $blurRadius $spreadRadius $color;
+}
+
+@mixin transform($action) {
+  -webkit-transform: $action;
+  -ms-transform: $action;
+  transform: $action;
+}
+
+@mixin transition($action...) {
+  -webkit-transition: $action;
+  -moz-transition: $action;
+  -ms-transition: $action;
+  -o-transition: $action;
+  transition: $action;
+}
+
+@mixin appearance($action) {
+  -webkit-appearance: $action;
+  -moz-appearance:    $action;
+  appearance:         $action;
+}
+
+@mixin box-sizing($action) {
+  -webkit-box-sizing: $action;
+  -moz-box-sizing: $action;
+  box-sizing: $action;
+}
