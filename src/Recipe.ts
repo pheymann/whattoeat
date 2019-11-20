@@ -1,7 +1,7 @@
 
 export {
-  addNewDishRecipe,
-  addNewOtherRecipe
+  isKnownDish,
+  addNewRecipe
 };
 
 export interface Recipe {
@@ -10,36 +10,70 @@ export interface Recipe {
   creationTime: number;
 }
 
+const mainDish      = '#main'
+const breakfastDish = '#breakfast'
+const lightDish     = '#light'
+const sweetDish     = '#sweet'
+
+const dishTypes = [mainDish, breakfastDish, lightDish, sweetDish]
+
+function isKnownDish(dish: string): boolean {
+  return dishTypes.some(d => d === dish)
+}
+
 const recipes: Recipe[] = [
   {
     name: 'Auberginen-Lasagne mit Kichererbsencreme',
-    tags: ['#main', '#warm', '#wholeyear'],
+    tags: [mainDish, '#warm', '#wholeyear'],
     creationTime: 30
   },
   {
     name: 'Spaghetti mit Spinat-Mandel-Creme',
-    tags: ['#main', '#warm', '#wholeyear'],
+    tags: [mainDish, '#warm', '#wholeyear'],
     creationTime: 30
   }
 ]
 
-const dishRecipes: Recipe[] = recipes.filter(recipe => recipe.tags.some(tag => tag === "#main"))
-
-const otherRecipes: Recipe[] = recipes.filter(recipe => recipe.tags.some(tag => tag !== "#main"))
-
-function selectIndex(max: number): number {
-  return Math.floor(Math.random() * Math.floor(max));
+function addNewRecipe(dishType: string, alreadySelected: Recipe[]): Recipe[] {
+  if (dishType === mainDish) {
+    return addNewMainRecipe(alreadySelected)
+  }
+  else if (dishType === breakfastDish) {
+    return addNewBreakfastRecipe(alreadySelected)
+  }
+  else if (dishType === lightDish) {
+    return addNewLightRecipe(alreadySelected)
+  }
+  else {
+    return addNewSweetRecipe(alreadySelected)
+  }
 }
 
-function addNewDishRecipe(alreadySelected: Recipe[]): Recipe[] {
-  return addNewRecipe(alreadySelected, dishRecipes);
+const mainRecipes = filterRecipes(mainDish)
+
+function addNewMainRecipe(alreadySelected: Recipe[]): Recipe[] {
+  return addNewRecipeUtil(alreadySelected, mainRecipes);
 }
 
-function addNewOtherRecipe(alreadySelected: Recipe[]): Recipe[] {
-  return addNewRecipe(alreadySelected, otherRecipes);
+const breakfastRecipes = filterRecipes(breakfastDish)
+
+function addNewBreakfastRecipe(alreadySelected: Recipe[]): Recipe[] {
+  return addNewRecipeUtil(alreadySelected, breakfastRecipes);
 }
 
-function addNewRecipe(alreadySelected: Recipe[], baseRecipes: Recipe[]): Recipe[] {
+const sweetRecipes = filterRecipes(sweetDish)
+
+function addNewSweetRecipe(alreadySelected: Recipe[]): Recipe[] {
+  return addNewRecipeUtil(alreadySelected, sweetRecipes);
+}
+
+const lightRecipes = filterRecipes(lightDish)
+
+function addNewLightRecipe(alreadySelected: Recipe[]): Recipe[] {
+  return addNewRecipeUtil(alreadySelected, lightRecipes);
+}
+
+function addNewRecipeUtil(alreadySelected: Recipe[], baseRecipes: Recipe[]): Recipe[] {
   let recipe = baseRecipes[selectIndex(baseRecipes.length)];
 
   while (alreadySelected.some(el => el.name === recipe.name)) {
@@ -49,4 +83,12 @@ function addNewRecipe(alreadySelected: Recipe[], baseRecipes: Recipe[]): Recipe[
   alreadySelected.push(recipe);
 
   return alreadySelected;
+}
+
+function filterRecipes(tag: string): Recipe[] {
+  return recipes.filter(recipe => recipe.tags.some(tag => tag === tag))
+}
+
+function selectIndex(max: number): number {
+  return Math.floor(Math.random() * Math.floor(max));
 }
