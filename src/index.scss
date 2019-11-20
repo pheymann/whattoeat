@@ -10,10 +10,11 @@ h3,
 h4,
 h5,
 h6,
-button {
+button,
+input,
+label,
+select {
     @extend %common-text-styling;
-
-    font-family: $header-font-family;
 }
 
 h1 {
@@ -25,19 +26,6 @@ h1 {
 h2 {
     font-size: 1.8em;
     margin-top: 50px;
-}
-
-p, 
-li, 
-a {
-    @extend %content-text-styling;
-}
-
-input,
-label {
-    @extend %content-text-styling;
-
-    font-family: $header-font-family;
 }
 
 .clearfix {
@@ -64,8 +52,27 @@ header {
     p {
         margin: 5px 0 5px 20px;
         color: $bg-color;
-        font-family: $header-font-family;
+        font-family: $content-font-family;
     }
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    border: none;
+    border-bottom: 1px solid $bg-medium-color;
+
+    text-align: center;
+
+    margin: 10px auto 10px auto;
+    width: 200px;
+    height: 50px;
+}
+
+select:hover,
+select:focus {
+    border-color: $primary-color;
 }
 
 .container {
@@ -73,9 +80,7 @@ header {
     margin: 60px auto 0 auto;
     text-align: center;
 
-    #recipes {
-        ul {
-            list-style: none;
-        }
+    #recipe-recommendations {
+        list-style: none;
     }
 }
