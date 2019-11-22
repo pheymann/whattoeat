@@ -3,6 +3,7 @@ import * as $ from "jquery";
 export default {
   render,
   register,
+  setFocusOn,
   remove
 }
 
@@ -16,6 +17,10 @@ function register(action: (id: string) => void): void {
 
     action(Id)
   })
+}
+
+function setFocusOn(): void {
+  element().focus()
 }
 
 function remove(): void {

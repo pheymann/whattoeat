@@ -33,6 +33,7 @@ $(document).ready(() => {
             RecipeRecos.render(dishType, numberOfDays, html => $(`#${id}`).after(html))
             RecipeRecos.registerCopy()
           })
+          ActionButton.setFocusOn()
         })
         NumberOfDishes.setFocusOn()
       }
