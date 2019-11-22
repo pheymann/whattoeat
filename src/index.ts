@@ -3,6 +3,7 @@ import './index.scss';
 import * as $ from "jquery";
 import Util from "./Util";
 import NumberOfDishes from "./NumberOfDishes";
+import ActionButton from "./ActionButton";
 import RecipeRecos from "./RecipeRecommendations";
 import {isKnownDish} from "./Recipe";
 
@@ -14,6 +15,7 @@ $(document).ready(() => {
 
     if (isKnownDish(dishType)) {
       NumberOfDishes.remove()
+      ActionButton.remove()
       RecipeRecos.remove()
       NumberOfDishes.render(html => $('#dish-type-selection').after(html))
       
@@ -22,9 +24,13 @@ $(document).ready(() => {
 
         console.debug(`[DEBUG] select ${numberOfDays} ${dishType} recipes`)
 
-        RecipeRecos.remove()
-        RecipeRecos.render(dishType, numberOfDays, html => $(`#${id}`).after(html))
-        RecipeRecos.registerCopy()
+        ActionButton.remove()
+        ActionButton.render(html => $(`#${id}`).after(html))
+        ActionButton.register(id => {
+          RecipeRecos.remove()
+          RecipeRecos.render(dishType, numberOfDays, html => $(`#${id}`).after(html))
+          RecipeRecos.registerCopy()
+        })
       })
       NumberOfDishes.setFocusOn()
     }

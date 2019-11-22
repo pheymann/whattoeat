@@ -80,13 +80,38 @@ select:hover,
 select:focus,
 input[type="number"]:hover,
 input[type="number"]:focus {
-    border-color: #04668C;
+    border-color: $primary-color;
     outline: none;
 }
 
 @media only screen and (max-width: $breakpoint-small) {
     select,
     input[type="number"] {
+        width: 90%;
+    }
+}
+
+button[id="select-recipes"] {
+    width: 150px;
+    height: 40px;
+    background-color: $action-color;
+    color: $bg-color;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 15px 5px 15px;
+    margin-top: 20px;
+}
+
+button[id="select-recipes"]:hover {
+    background-color: $action-color-hover;
+}
+
+button[id="select-recipes"]:active {
+    background-color: $action-color-active;
+}
+
+@media only screen and (max-width: $breakpoint-small) {
+    button[id="select-recipes"] {
         width: 90%;
     }
 }
@@ -108,7 +133,7 @@ input[type="number"]:focus {
             margin: 0 auto 30px auto;
             padding: 10px 10px 10px 10px;
 
-            border-left: solid 2px #04668C;
+            border-left: solid 2px $primary-color;
 
             h4 {
                 margin: 0;
@@ -119,7 +144,7 @@ input[type="number"]:focus {
             }
 
             button {
-                background-color:#ff7365e0;
+                background-color:$action-color;
                 border: none;
                 border-radius: 10px;
                 color: $bg-color;
@@ -129,11 +154,11 @@ input[type="number"]:focus {
             }
 
             button:hover {
-                background-color: #ff7365bd;
+                background-color: $action-color-hover;
             }
 
             button:active {
-                background-color: #ff7265;
+                background-color: $action-color-active;
             }
 
             @media only screen and (max-width: $breakpoint-small) {
