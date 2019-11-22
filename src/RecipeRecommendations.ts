@@ -41,10 +41,12 @@ function renderRecipes(recipes: Recipe[]): string {
 }
 
 function renderRecipe(recipe: Recipe): string {
-  const html = `<h4>${recipe.name} (${recipe.creationTime}min)</h4>`
+  const name = `<h4>${recipe.name}</h4>`
+  const details = `<p>${recipe.creationTime}min</p>`
 
   return `
     <li>
-      ${html}
+      ${name}
+      ${details}
     </li>`
 }

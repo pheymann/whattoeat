@@ -7,9 +7,7 @@ export default {
 }
 
 function render(action: (html: string) => void): void {
-  const html = renderSelection(7)
-
-  action(html)
+  action('<br/><input id="number-of-days" type="number" min="1"/>')
 }
 
 function register(action: (id: string) => void): void {
@@ -20,22 +18,4 @@ function register(action: (id: string) => void): void {
 
 function remove(): void {
   $('#number-of-days').remove()
-}
-
-function renderSelection(numberOfDays: number): string {
-  const options = Array
-    .from(Array(numberOfDays).keys())
-    .map(day => renderDaysOption(day + 1) + "\n")
-    .reverse()
-    .join("\n")
-
-  return `
-    <br/>
-    <select id="number-of-days">
-      ${options}
-    </select>`
-}
-
-function renderDaysOption(days: number): string {
-  return `<option value="${days}">${days}</option>`
 }

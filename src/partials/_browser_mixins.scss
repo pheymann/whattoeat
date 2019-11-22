@@ -42,6 +42,18 @@
   appearance:         $action;
 }
 
+@mixin text-align-center {
+  text-align: center;
+  text-align: -webkit-center;
+  justify-content: center;
+}
+
+@mixin text-align-left {
+  text-align: left;
+  text-align: -webkit-left;
+  justify-content: left;
+}
+
 @mixin box-sizing($action) {
   -webkit-box-sizing: $action;
   -moz-box-sizing: $action;

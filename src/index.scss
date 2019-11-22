@@ -1,4 +1,9 @@
 @import './partials/basic_styles';
+@import './partials/browser_mixins';
+
+$breakpoint-small: 33.75em; // 540px
+$breakpoint-med: 45em; // 720px
+$breakpoint-large: 60em; // 960px
 
 body {    
     margin: 0;
@@ -14,7 +19,7 @@ button,
 input,
 label,
 select {
-    @extend %common-text-styling;
+    @extend %content-text-styling;
 }
 
 h1 {
@@ -44,7 +49,7 @@ header {
     width: 100%;
     top: 0;
     padding: 5px 0 5px 0;
-    background-color: rgb(46, 46, 46);;
+    background-color: #605B56;
     z-index: 100;
 
     box-shadow: 0 0 5px $text-light-color;
@@ -53,17 +58,18 @@ header {
         margin: 5px 0 5px 20px;
         color: $bg-color;
         font-family: $content-font-family;
+        font-weight: bold;
     }
 }
 
-select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
+select,
+input[type="number"] {
+    @include appearance(none);
+    @include text-align-center;
 
     border: none;
     border-bottom: 1px solid $bg-medium-color;
-
-    text-align: center;
+    border-radius: 0;
 
     margin: 10px auto 10px auto;
     width: 200px;
@@ -71,16 +77,58 @@ select {
 }
 
 select:hover,
-select:focus {
-    border-color: $primary-color;
+select:focus,
+input[type="number"]:hover,
+input[type="number"]:focus {
+    border-color: #04668C;
+    outline: none;
+}
+
+@media only screen and (max-width: $breakpoint-small) {
+    select,
+    input[type="number"] {
+        width: 90%;
+    }
 }
 
 .container {
-    width: 800px;
+    width: $breakpoint-med;
     margin: 60px auto 0 auto;
     text-align: center;
 
     #recipe-recommendations {
         list-style: none;
+        margin-top: 50px;
+        padding: 0;
+
+        li {
+            @include text-align-left;
+
+            width: 60%;
+            margin: 0 auto 30px auto;
+            padding: 10px 10px 10px 10px;
+
+            border-left: solid 2px #04668C;
+
+            h4 {
+                margin: 0;
+            }
+
+            p {
+                margin: 5px 0 0 0;
+            }
+        }
+
+        @media only screen and (max-width: $breakpoint-med) {
+            li {
+                width: 90%;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: $breakpoint-large) {
+    .container {
+        width: 100%;
     }
 }

@@ -18,7 +18,7 @@ $(document).ready(() => {
       NumberOfDishes.render(html => $('#dish-type-selection').after(html))
       
       NumberOfDishes.register(id => {
-        const numberOfDays = Util.valToNumber($(`#${id} option:selected`).val())
+        const numberOfDays = Util.valToNumber($(`#${id}`).val())
 
         console.debug(`[DEBUG] select ${numberOfDays} ${dishType} recipes`)
 
