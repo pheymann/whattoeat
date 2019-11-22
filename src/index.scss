@@ -94,7 +94,7 @@ input[type="number"]:focus {
 button[id="select-recipes"] {
     width: 150px;
     height: 40px;
-    background-color: $action-color;
+    background-color: $primary-color;
     color: $bg-color;
     border: none;
     border-radius: 10px;
@@ -103,11 +103,11 @@ button[id="select-recipes"] {
 }
 
 button[id="select-recipes"]:hover {
-    background-color: $action-color-hover;
+    background-color: $primary-color-hover;
 }
 
 button[id="select-recipes"]:active {
-    background-color: $action-color-active;
+    background-color: $primary-color-active;
 }
 
 @media only screen and (max-width: $breakpoint-small) {

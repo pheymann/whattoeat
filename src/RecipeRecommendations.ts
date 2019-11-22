@@ -1,5 +1,5 @@
 import * as $ from "jquery";
-import {Recipe, DishType, totalNumberRecipes, addNewRecipe} from "./Recipe";
+import {Recipe, DishType, totalNumberRecipes, addNewRecipe, findIngredients} from "./Recipe";
 
 export default {
   render,
@@ -22,10 +22,12 @@ function registerCopy(): void {
 
     clipboardStorage.setAttribute("display", "none")
     document.body.appendChild(clipboardStorage)
-    clipboardStorage.value = event.target.id;
-    clipboardStorage.select();
-    document.execCommand("copy");
-    document.body.removeChild(clipboardStorage);
+    
+    clipboardStorage.value = event.target.id + "\n" + findIngredients(event.target.id).join('\n')
+    
+    clipboardStorage.select()
+    document.execCommand("copy")
+    document.body.removeChild(clipboardStorage)
   })
 }
 
