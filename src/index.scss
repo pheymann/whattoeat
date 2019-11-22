@@ -117,6 +117,30 @@ input[type="number"]:focus {
             p {
                 margin: 5px 0 0 0;
             }
+
+            button {
+                background-color:#ff7365e0;
+                border: none;
+                border-radius: 10px;
+                color: $bg-color;
+                font-size: 0.9em;
+                padding: 5px 15px 5px 15px;
+                margin-top: 20px;
+            }
+
+            button:hover {
+                background-color: #ff7365bd;
+            }
+
+            button:active {
+                background-color: #ff7265;
+            }
+
+            @media only screen and (max-width: $breakpoint-small) {
+                button {
+                    width: 100%;
+                }
+            }
         }
 
         @media only screen and (max-width: $breakpoint-med) {

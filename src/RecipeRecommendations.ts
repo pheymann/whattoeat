@@ -3,6 +3,7 @@ import {Recipe, addNewRecipe} from "./Recipe";
 
 export default {
   render,
+  registerCopy,
   remove
 }
 
@@ -11,6 +12,21 @@ function render(dishType: string, numberOfDays: number, action: (html: string) =
   const html    = renderRecipes(recipes)
 
   action(html)
+}
+
+function registerCopy(): void {
+  $('.recipe-copy').click(event => {
+    event.preventDefault()
+    
+    const clipboardStorage = document.createElement("textarea");
+
+    clipboardStorage.setAttribute("display", "none")
+    document.body.appendChild(clipboardStorage)
+    clipboardStorage.value = event.target.id;
+    clipboardStorage.select();
+    document.execCommand("copy");
+    document.body.removeChild(clipboardStorage);
+  })
 }
 
 function remove(): void {
@@ -41,13 +57,15 @@ function renderRecipes(recipes: Recipe[]): string {
 }
 
 function renderRecipe(recipe: Recipe): string {
-  const name    = `<h4>${recipe.name}</h4>`
-  const details = `<p>${recipe.creationTime}min</p>`
+  const name       = `<h4>${recipe.name}</h4>`
+  const details    = `<p>${recipe.creationTime}min</p>`
+  const copyButton = `<button class="recipe-copy" id="${recipe.name}">Copy</button>`
 
   return `
     <li>
       ${name}
       ${details}
+      ${copyButton}
     </li>`
 }
 

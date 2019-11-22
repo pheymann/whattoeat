@@ -24,6 +24,7 @@ $(document).ready(() => {
 
         RecipeRecos.remove()
         RecipeRecos.render(dishType, numberOfDays, html => $(`#${id}`).after(html))
+        RecipeRecos.registerCopy()
       })
       NumberOfDishes.setFocusOn()
     }
