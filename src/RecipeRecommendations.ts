@@ -54,5 +54,5 @@ function renderRecipe(recipe: Recipe): string {
 const Id = "recipe-recommendations"
 
 function element() {
-  return $(`${Id}`)
+  return $(`#${Id}`)
 }
