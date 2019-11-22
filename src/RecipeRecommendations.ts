@@ -14,7 +14,7 @@ function render(dishType: string, numberOfDays: number, action: (html: string) =
 }
 
 function remove(): void {
-  $('#recipe-recommendations').remove()
+  element().remove()
 }
 
 function selectRecipes(dishType: string, numberOfDays: number): Recipe[] {
@@ -35,13 +35,13 @@ function renderRecipes(recipes: Recipe[]): string {
     .join('\n')
 
   return `
-    <ul id="recipe-recommendations">
+    <ul id="${Id}">
       ${recipesHtml}
     </ul>`
 }
 
 function renderRecipe(recipe: Recipe): string {
-  const name = `<h4>${recipe.name}</h4>`
+  const name    = `<h4>${recipe.name}</h4>`
   const details = `<p>${recipe.creationTime}min</p>`
 
   return `
@@ -49,4 +49,10 @@ function renderRecipe(recipe: Recipe): string {
       ${name}
       ${details}
     </li>`
+}
+
+const Id = "recipe-recommendations"
+
+function element() {
+  return $(`${Id}`)
 }

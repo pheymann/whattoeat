@@ -25,6 +25,7 @@ $(document).ready(() => {
         RecipeRecos.remove()
         RecipeRecos.render(dishType, numberOfDays, html => $(`#${id}`).after(html))
       })
+      NumberOfDishes.setFocusOn()
     }
     else {
       console.debug(`[DEBUG] not a known dish type: '${dishType}'`)
