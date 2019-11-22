@@ -1,5 +1,5 @@
 import * as $ from "jquery";
-import {Recipe, addNewRecipe} from "./Recipe";
+import {Recipe, DishType, totalNumberRecipes, addNewRecipe} from "./Recipe";
 
 export default {
   render,
@@ -7,8 +7,8 @@ export default {
   remove
 }
 
-function render(dishType: string, numberOfDays: number, action: (html: string) => void): void {
-  const recipes = selectRecipes(dishType, numberOfDays)
+function render(dishType: DishType, numberOfDishes: number, action: (html: string) => void): void {
+  const recipes = selectRecipes(dishType, numberOfDishes)
   const html    = renderRecipes(recipes)
 
   action(html)
@@ -33,11 +33,14 @@ function remove(): void {
   element().remove()
 }
 
-function selectRecipes(dishType: string, numberOfDays: number): Recipe[] {
+function selectRecipes(dishType: DishType, numberOfDishes: number): Recipe[] {
+  const total = totalNumberRecipes(dishType)
+  const limit = total - numberOfDishes < 0 ? total : numberOfDishes
+
   let recipes: Recipe[] = []
   let counter = 0
 
-  while (counter < numberOfDays) {
+  while (counter < limit) {
     recipes = addNewRecipe(dishType, recipes)
     counter = counter + 1
   }
